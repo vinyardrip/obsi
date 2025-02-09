@@ -114,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "linux/arch constant.md",
+                "file": "linux/arch install/dual boot BIOS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +124,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Обратные ссылки для arch constant"
+              "title": "Обратные ссылки для dual boot BIOS"
             }
           },
           {
@@ -133,12 +133,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "linux/arch constant.md",
+                "file": "linux/arch install/dual boot BIOS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из arch constant"
+              "title": "Исходящие ссылки из dual boot BIOS"
             }
           },
           {
@@ -162,13 +162,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "linux/arch constant.md",
+                "file": "linux/arch install/dual boot BIOS.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Структура arch constant"
+              "title": "Структура dual boot BIOS"
             }
           }
         ]
@@ -188,11 +188,11 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "0863df27cfc078c3",
+  "active": "1ec241f7e3730dea",
   "lastOpenFiles": [
+    "linux/arch constant.md",
     "windows/test.md",
     "linux/hyprland/hypr-settings.md",
-    "linux/arch constant.md",
     "linux/hyprland",
     "linux/arch install/arch btrfs general instruction.md",
     "linux/commands bash/keybinding bash.md",
