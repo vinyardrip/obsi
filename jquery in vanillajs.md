@@ -35,3 +35,6 @@
 | $(el).width();                                               | Ширина элемента                    | el.scrollWidth;                                                                                           |
 | $(el).innerWidth();                                          | Ширина с padding, но без border    | el.clientWidth;                                                                                           |
 | $(el).outerWidth();                                          | Ширина с padding + border          | el.offsetWidth;                                                                                           |
+| $(el).height();                                              | Высота элемента                    | el.scrollHeight;                                                                                          |
+| $(el).innerHeight();                                         | Высота с padding, но без border    | el.clientHeight;                                                                                          |
+| $(el).outerHeight();                                         | Высота с padding + border          | el.offsetHeight;                                                                                          |
