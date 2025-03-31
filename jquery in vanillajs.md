@@ -17,4 +17,10 @@
 | $(el).prev();                                                | Предыдущий элемент                 | el.previousElement.Sibling;                                                                               |
 | $(el).next();                                                | Следующий элемент                  | el.nextElementSibling;                                                                                    |
 | $(el).parent();                                              | Родительский элемент               | el.parentElement;<br>  // or<br>el.parentNode                                                             |
-|                                                              | Дочерний элемент                   |                                                                                                           |
+| $(el).children();                                            | Дочерний элемент                   | el.children;                                                                                              |
+|                                                              | Первый дочерний элемент            | el.firstElementChild;<br>  // or<br>el.children[0];                                                       |
+|                                                              | Последний дочерний элемент         | el.lastElementChild;                                                                                      |
+|                                                              | Работа с классами                  |                                                                                                           |
+| $(el).addClass("className")                                  | Добавление класса                  | el.classList.add("className");                                                                            |
+| $(el).attr("class", "className");                            | Изменение (замена) класса          | el.classList.replace("className");                                                                        |
+|                                                              | Удаление класса                    |                                                                                                           |
