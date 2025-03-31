@@ -23,4 +23,15 @@
 |                                                              | Работа с классами                  |                                                                                                           |
 | $(el).addClass("className")                                  | Добавление класса                  | el.classList.add("className");                                                                            |
 | $(el).attr("class", "className");                            | Изменение (замена) класса          | el.classList.replace("className");                                                                        |
-|                                                              | Удаление класса                    |                                                                                                           |
+| $(el).removeClass("className");                              | Удаление класса                    | el.classList.remove("className");                                                                         |
+| $(el).removeClass();                                         | Удаление всех классов              | el.removeAttribute("class");                                                                              |
+| $(el).toggleClass("className");                              | Добавление-удаление класса         | el.classList.toggle("className");                                                                         |
+| $(el).hasClass("className");                                 | Наличие класса                     | el.classList.contains("className");                                                                       |
+| $(el).attr("class");                                         | Получение класса                   | el.getAttribute("class");                                                                                 |
+|                                                              | Работа с атрибутами                |                                                                                                           |
+| $(el).attr("value");                                         | Получение атрибута                 | el.getAttribute("value");                                                                                 |
+| $(el).attr("style", "color: #143423");                       | Добавление атрибута                | el.setAttribute("style", "color: #042321");                                                               |
+| $(el).removeAttr("style");                                   | Удаление атрибута                  | el.removeAttribute("style");                                                                              |
+| $(el).width();                                               | Ширина элемента                    | el.scrollWidth;                                                                                           |
+| $(el).innerWidth();                                          | Ширина с padding, но без border    | el.clientWidth;                                                                                           |
+| $(el).outerWidth();                                          | Ширина с padding + border          | el.offsetWidth;                                                                                           |
