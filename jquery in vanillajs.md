@@ -17,4 +17,4 @@
 | $(el).prev();                                                | Предыдущий элемент                 | el.previousElement.Sibling;                                                                               |
 | $(el).next();                                                | Следующий элемент                  | el.nextElementSibling;                                                                                    |
 | $(el).parent();                                              | Родительский элемент               | el.parentElement;<br>  // or<br>el.parentNode                                                             |
-|                                                              |                                    |                                                                                                           |
+|                                                              | Дочерний элемент                   |                                                                                                           |
