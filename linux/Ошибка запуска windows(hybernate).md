@@ -9,3 +9,10 @@ cat /etc/mtab
 ```
 sudo umount /dev/sdaX
 ``` 
+
+
+в windows отключаем гибернацию
+
+```
+powercfg /h off
+```
