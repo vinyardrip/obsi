@@ -16,9 +16,7 @@ Generated bash
 sudo pacman -S reflector micro
 ```
 
-content_copydownload
 
-Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
 ### Шаг 2: Создание резервной копии
 
@@ -30,9 +28,6 @@ Generated bash
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
 ### Шаг 3: Настройка службы systemd для автоматизации
 
@@ -46,9 +41,6 @@ Generated bash
 sudo micro /etc/systemd/system/reflector.service
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
 Вставьте в него следующий текст:
 
@@ -68,9 +60,6 @@ ExecStart=/usr/bin/reflector --verbose --country 'Belarus,Russia,Poland,Germany,
 WantedBy=multi-user.target
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).Ini
 
 > **Примечание:** Эта команда ищет 20 самых быстрых зеркал в Беларуси и соседних странах, которые обновлялись в последние 12 часов. Это надежный и сбалансированный подход.
 
@@ -84,9 +73,6 @@ Generated bash
 sudo micro /etc/systemd/system/reflector.timer
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
 Вставьте в него:
 
@@ -104,9 +90,6 @@ Persistent=true
 WantedBy=timers.target
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).Ini
 
 **3. Включение и запуск таймера:**
 
@@ -117,9 +100,6 @@ sudo systemctl enable reflector.timer
 sudo systemctl start reflector.timer
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
 Теперь ваш список зеркал будет обновляться автоматически раз в неделю.
 
@@ -136,9 +116,6 @@ error: failed retrieving file '...' from ... : OpenSSL SSL_read: ... unexpected 
 warning: too many errors from ..., skipping for the remainder of this transaction
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).
 
 **Причина:** Выбранное зеркало нестабильно или блокируется на маршруте.
 
@@ -151,9 +128,6 @@ sudo reflector --verbose --country 'Belarus,Russia,Poland,Germany,Ukraine' --pro
 sudo pacman -Syyu
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
 ### Проблема 2: Ошибки доступа к AUR (Arch User Repository)
 
@@ -165,9 +139,6 @@ Generated code
 fatal: unable to access 'https://aur.archlinux.org/...' : Failed to connect to aur.archlinux.org port 443
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).
 
 **Причина:** Это почти всегда означает, что доступ к aur.archlinux.org **заблокирован на уровне интернет-провайдера**.
 
@@ -178,7 +149,13 @@ Use code [with caution](https://support.google.com/legal/answer/13505487).
 2. После активации VPN повторите команду установки/обновления пакета из AUR (например, yay -Syu).
     
 3. Трафик пойдет через зашифрованный туннель, обходя блокировку.
-    
+
+включить warp - алиасы
+
+```
+w_start
+w_stop
+```
 
 ### Проблема 3: Сообщение "Flagged Out Of Date" от AUR-хелпера
 
@@ -191,9 +168,6 @@ Flagged Out Of Date AUR Packages: package-name
 there is nothing to do
 ```
 
-content_copydownload
-
-Use code [with caution](https://support.google.com/legal/answer/13505487).
 
 **Что это значит:** Это **не ошибка**. Это информационное сообщение. Сообщество пометило пакет как "устаревший", но его сопровождающий еще не обновил "рецепт" для сборки в AUR. Ваш AUR-хелпер (yay, paru) видит это, но поскольку сам рецепт не изменился, ему "нечего делать".
 
@@ -209,11 +183,6 @@ Use code [with caution](https://support.google.com/legal/answer/13505487).
     yay -Syu
     ```
     
-    content_copydownload
-    
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
-    
-    (или paru, если используете его)
     
 - **Принудительное обновление баз данных pacman (нужно после ручной смены зеркал):**
     
@@ -223,9 +192,6 @@ Use code [with caution](https://support.google.com/legal/answer/13505487).
     sudo pacman -Syyu
     ```
     
-    content_copydownload
-    
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
 - **Проверить статус автоматического обновления зеркал:**
     
@@ -235,9 +201,6 @@ Use code [with caution](https://support.google.com/legal/answer/13505487).
     systemctl status reflector.timer
     ```
     
-    content_copydownload
-    
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
 - **Посмотреть текущий список зеркал:**
     
@@ -247,6 +210,3 @@ Use code [with caution](https://support.google.com/legal/answer/13505487).
     micro /etc/pacman.d/mirrorlist
     ```
     
-    content_copydownload
-    
-    Use code [with caution](https://support.google.com/legal/answer/13505487).
