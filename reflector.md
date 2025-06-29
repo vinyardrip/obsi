@@ -19,8 +19,9 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/reflector --verbose --country 'Belarus,Russia,Poland,Germany,Ukraine' --protocol https --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
+ExecStart=/usr/bin/reflector --verbose --country 'Belarus,Russia,Poland,Germany,Ukraine' --protocol https --age 12 --sort rate --latest 20 --save /etc/pacman.d/mirrorlist
 
 [Install]
 WantedBy=multi-user.target
 ```
+
