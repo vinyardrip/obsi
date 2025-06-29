@@ -25,3 +25,24 @@ ExecStart=/usr/bin/reflector --verbose --country 'Belarus,Russia,Poland,Germany,
 WantedBy=multi-user.target
 ```
 
+```
+sudo micro /etc/systemd/system/reflector.timer
+```
+
+```
+[Unit]
+Description=Run reflector weekly
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+
+```
+sudo systemctl enable reflector.timer
+sudo systemctl start reflector.timer
+```
+
