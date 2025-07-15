@@ -1,73 +1,73 @@
 ```
-# asdf set [flags] <name> <version> [<version>...] 
 
-# set in current dir
-asdf set nodejs 14.20.1 
+# Шпаргалка по командам asdf-vm
 
-# set in .tool-versions file in home directory 
-asdf set -u elixir 1.2.4 
+Это краткое руководство по основным командам менеджера версий asdf. Используйте его для быстрого поиска нужной операции.
 
-# set in existing .tool-versions file in a parent dir
-asdf set -p elixir 1.2.4 
+---
 
-```
+## Управление плагинами (plugin)
 
-MANAGE PLUGINS
-asdf plugin add <name> [<git-url>]      Add a plugin from the plugin repo OR,
-                                        add a Git repo as a plugin by
-                                        specifying the name and repo url
-asdf plugin list [--urls] [--refs]      List installed plugins. Optionally show
-                                        git urls and git-ref
-asdf plugin list all                    List plugins registered on asdf-plugins
-                                        repository with URLs
-asdf plugin remove <name>               Remove plugin and package versions
-asdf plugin update <name> [<git-ref>]   Update a plugin to latest commit on
-                                        default branch or a particular git-ref
-asdf plugin update --all                Update all plugins to latest commit on
-                                        default branch
+Плагины "учат" asdf, как работать с конкретными инструментами (например, nodejs, ruby, obsidian).
 
+|   |   |
+|---|---|
+|Команда|Описание|
+|asdf plugin add <name> [<url>]|Добавляет плагин по имени из репозитория или по прямому URL на Git-репозиторий.|
+|asdf plugin list|Показывает список всех установленных плагинов.|
+|asdf plugin list all|Выводит полный список всех плагинов, доступных в официальном репозитории asdf.|
+|asdf plugin update <name>|Обновляет указанный плагин до последней версии.|
+|asdf plugin update --all|Обновляет все установленные плагины.|
+|asdf plugin remove <name>|Удаляет плагин и **все установленные им версии** инструментов.|
 
-MANAGE TOOLS
-asdf current                            Display current version set or being
-                                        used for all packages
-asdf current <name>                     Display current version set or being
-                                        used for package
-asdf help <name> [<version>]            Output documentation for plugin and tool
-asdf install                            Install all the package versions listed
-                                        in the .tool-versions file
-asdf install <name>                     Install one tool at the version
-                                        specified in the .tool-versions file
-asdf install <name> <version>           Install a specific version of a package
-asdf install <name> latest[:<version>]  Install the latest stable version of a
-                                        package, or with optional version,
-                                        install the latest stable version that
-                                        begins with the given string
-asdf latest <name> [<version>]          Show latest stable version of a package
-asdf latest --all                       Show latest stable version of all the
-                                        packages and if they are installed
-asdf list <name> [version]              List installed versions of a package and
-                                        optionally filter the versions
-asdf list all <name> [<version>]        List all versions of a package and
-                                        optionally filter the returned versions
-asdf set [-u] [-p] <name> <versions...> Set a tool version in a .tool-version in
-                                        the current directory, or a parent
-                                        directory.
-asdf uninstall <name> <version>         Remove a specific version of a package
-asdf where <name> [<version>]           Display install path for an installed
-                                        or current version
-asdf which <command>                    Display the path to an executable
+---
 
+## Управление инструментами (install, list, set и т.д.)
 
-UTILS
-asdf exec <command> [args...]           Executes the command shim for current version
-asdf env <command> [util]               Runs util (default: `env`) inside the
-                                        environment used for command shim execution.
-asdf info                               Print OS, Shell and ASDF debug information.
-asdf version                            Print the currently installed version of ASDF
-asdf reshim <name> <version>            Recreate shims for version of a package
-asdf shimversions <command>             List the plugins and versions that
-                                        provide a command
+Это основные команды для управления версиями ваших программ и языков.
 
-RESOURCES
-GitHub: https://github.com/asdf-vm/asdf
-Docs:   https://asdf-vm.com
+### Установка и удаление
+
+|   |   |
+|---|---|
+|Команда|Описание|
+|asdf install <name> <version>|Устанавливает конкретную версию инструмента.|
+|asdf install <name> latest|Устанавливает последнюю стабильную версию инструмента.|
+|asdf install|Устанавливает все инструменты и версии, указанные в файле .tool-versions текущей директории.|
+|asdf uninstall <name> <version>|Удаляет конкретную версию инструмента.|
+
+### Просмотр информации
+
+|   |   |
+|---|---|
+|Команда|Описание|
+|asdf list <name>|Показывает все **установленные** версии указанного инструмента.|
+|asdf list all <name>|Показывает все **доступные для установки** версии инструмента.|
+|asdf latest <name>|Показывает номер последней стабильной версии инструмента.|
+|asdf current|Показывает, какие версии инструментов активны в данный момент.|
+|asdf where <name> [<version>]|Показывает путь, по которому установлена активная (или указанная) версия.|
+|asdf which <command>|Показывает полный путь к исполняемому файлу (шиму). Помогает проверить, что asdf управляет командой.|
+
+### Выбор активной версии
+
+|   |   |
+|---|---|
+|Команда|Описание|
+|asdf global <name> <version>|Устанавливает версию по умолчанию для всей системы (записывает в ~/.tool-versions).|
+|asdf local <name> <version>|Устанавливает версию для текущего каталога (записывает в ./.tool-versions).|
+|asdf shell <name> <version>|Устанавливает версию только для текущей сессии терминала.|
+
+---
+
+## Утилиты (utils)
+
+Вспомогательные команды для отладки и обслуживания.
+
+|   |   |
+|---|---|
+|Команда|Описание|
+|asdf reshim <name> <version>|Пересоздает "шимы" (shims). Полезно после глобальной установки пакетов (npm install -g, gem install).|
+|asdf exec <command>|Выполняет команду, используя исполняемый файл из текущей активной версии asdf.|
+|asdf info|Выводит отладочную информацию о системе, оболочке и asdf.|
+|asdf version|Показывает версию самого asdf.|
+|asdf shim-versions <command>|Показывает, какие плагины и версии предоставляют указанную команду.|
