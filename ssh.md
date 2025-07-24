@@ -31,7 +31,6 @@ Generated bash
 sudo pacman -Syu openssh
 ```
 
-Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
 #### Шаг 1.2: Запуск и включение службы SSH
 
@@ -47,7 +46,6 @@ sudo systemctl start sshd
 sudo systemctl enable sshd
 ```
 
-Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
 Вы можете проверить статус службы, чтобы убедиться, что все в порядке:
 
@@ -77,7 +75,6 @@ sudo ufw reload
 sudo ufw status
 ````
 
-Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
 
 Вы должны увидеть в списке 22/tcp ALLOW или ssh ALLOW.
 
@@ -129,7 +126,6 @@ whoami
 ssh archuser@192.168.1.105
 ````
 
-Use code [with caution](https://support.google.com/legal/answer/13505487).
 
 #### Шаг 2.2: Первое подключение
 
@@ -170,6 +166,5 @@ archuser@192.168.1.105's password:
     ssh-copy-id archuser@192.168.1.105
     ```
     
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
     Вас попросят ввести пароль в последний раз. После этого при всех последующих подключениях пароль спрашивать не будут.
