@@ -68,3 +68,10 @@
 |asdf info|Выводит отладочную информацию о системе, оболочке и asdf.|
 |asdf version|Показывает версию самого asdf.|
 |asdf shim-versions <command>|Показывает, какие плагины и версии предоставляют указанную команду.|
+
+
+включить логи при сборке python 
+
+```
+PYTHON_BUILD_VERBOSE=1 asdf install python <нужная_версия>
+```
