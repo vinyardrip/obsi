@@ -1,3 +1,4 @@
+
 ## Выбор оптимального значения ParallelDownloads
 
 На основе полученной скорости выберите значение для опции `ParallelDownloads` в файле `/etc/pacman.conf`.
