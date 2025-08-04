@@ -2,7 +2,7 @@
 
 ##  Резервные DoH-серверы (на случай, если xbox-dns.ru ляжет)
 
-### 1. Быстрая замена в OBSIDIAN
+### 1. Быстрая замена 
 - `https://dns.google/dns-query` → 8.8.8.8
 - `https://cloudflare-dns.com/dns-query` → 1.1.1.1
 - `https://dns.quad9.net/dns-query` → 9.9.9.9
