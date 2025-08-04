@@ -1,6 +1,6 @@
 
-```markdown
-## 📌 Резервные DoH-серверы (на случай, если xbox-dns.ru ляжет)
+
+##  Резервные DoH-серверы (на случай, если xbox-dns.ru ляжет)
 
 ### 1. Быстрая замена в OBSIDIAN
 - `https://dns.google/dns-query` → 8.8.8.8
@@ -12,18 +12,18 @@
 
 ### 2. Настройки по системам
 
-#### 🔹 Chrome / Chromium / Brave (Linux, Windows, macOS)
+####  Chrome / Chromium / Brave (Linux, Windows, macOS)
 1. Открыть `chrome://settings/security`.
 2. Включить «**Использовать защищённый DNS**».
 3. Выбрать «**Собственный**» и вставить любой URL из списка выше.
 4. Добавить их через запятую в расширении «Secure DNS» для быстрого переключения.
 
-#### 🔹 Firefox
+####  Firefox
 1. `about:config` → `network.trr.uri` = `https://dns.google/dns-query`.
 2. `network.trr.mode` = `2` (fallback) или `3` (только DoH).
 3. Дополнительно: `network.trr.bootstrapAddress = 8.8.8.8`.
 
-#### 🔹 Arch Linux (systemd-resolved)
+####  Arch Linux (systemd-resolved)
 1. Установить пакет `systemd-resolved` (обычно уже есть).
 2. Открыть `/etc/systemd/resolved.conf`:
    ```ini
@@ -44,7 +44,7 @@
     ```
     
 
-#### 🔹 Arch Linux (NetworkManager)
+####  Arch Linux (NetworkManager)
 
 - GUI: Правая кнопка по подключению → Параметры → IPv4/IPv6 → DNS →  
     `1.1.1.1,8.8.8.9.9.9.9` → «Только автоматические (DHCP) адреса» → сохранить.
@@ -62,7 +62,7 @@
     ```
     
 
-#### 🔹 Router (OpenWrt / AdGuard Home)
+####  Router (OpenWrt / AdGuard Home)
 
 - Upstream DoH:
     
