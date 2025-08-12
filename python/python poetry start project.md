@@ -1,7 +1,6 @@
 
 # Справочник: Настройка Python-проекта (asdf + Poetry + VSCode + Zsh)
 
-**Теги:** #python #poetry #asdf #vscode #workflow #troubleshooting
 
 Этот справочник описывает профессиональный и воспроизводимый рабочий процесс для Python-проектов.
 
@@ -30,7 +29,6 @@
     mkdir мой-проект && cd мой-проект
     ```
     
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
 2. **Установить нужную версию Python:** Важно: всегда используем последнюю **стабильную** версию, а не альфа/бета.
     
@@ -44,7 +42,6 @@
     asdf install python 3.13.5
     ```
     
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
 3. **"Привязать" версию к проекту:** Это **ключевой шаг**. Он создает в папке файл .tool-versions, который является инструкцией для asdf.
     
@@ -54,7 +51,6 @@
     asdf local python 3.13.5
     ```
     
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
 
 ### Шаг 2: Инициализация проекта (Poetry)
@@ -67,7 +63,6 @@
     poetry init
     ```
     
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
 2. **Заполнить "паспорт" проекта (pyproject.toml):**
     
@@ -83,7 +78,6 @@
     touch README.md
     ```
     
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
 4. **Определить тип проекта:**
     
@@ -102,7 +96,6 @@
             package-mode = false
             ```
             
-            Use code [with caution](https://support.google.com/legal/answer/13505487).Toml
             
 
 ### Шаг 3: Установка и запуск
@@ -124,7 +117,6 @@
     poetry install
     ```
     
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
 2. **Запускать скрипты через poetry run:** Это префикс, который гарантирует, что команда выполняется внутри правильного виртуального окружения со всеми библиотеками.
     
@@ -134,7 +126,6 @@
     poetry run python мой_скрипт.py
     ```
     
-    Use code [with caution](https://support.google.com/legal/answer/13505487).Bash
     
 
 ### Шаг 4: Интеграция с VSCode
