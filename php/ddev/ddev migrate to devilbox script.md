@@ -174,6 +174,12 @@ php_version: "$DDEV_PHP_VERSION"
 webserver_type: apache-fpm
 # Устанавливаем .lo как основной домен верхнего уровня для проекта
 project_tld: lo
+
+# Явно указываем имя базы данных 
+database: 
+	type: mariadb # или mysql 
+	version: "10.11" # укажите нужную версию 
+	name: $PROJECT_NAME
 EOF
 # `> /dev/null 2>&1` — конструкция для полного подавления вывода команды.
 # `> /dev/null` перенаправляет стандартный вывод (stdout) в "черную дыру".
