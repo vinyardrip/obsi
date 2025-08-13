@@ -177,8 +177,8 @@ project_tld: lo
 
 # Явно указываем имя базы данных 
 database: 
-	type: mariadb # или mysql 
-	version: "10.11" # укажите нужную версию 
+	type: $DB_TYPE_DDEV # mariadb или mysql 
+	version: $DB_VERSION_DDEV # укажите нужную версию 
 	name: $PROJECT_NAME
 EOF
 # `> /dev/null 2>&1` — конструкция для полного подавления вывода команды.
