@@ -1,36 +1,36 @@
 
-````markdown
 # ArchLinux+KVM+NixOS+Hyprland GPU-Passthrough  
-> ⚠️ **Legacy BIOS**, **UEFI отключён**, **NVIDIA**  
-> Всё делается на **физическом Arch/EndeavourOS** (host), внутри — **NixOS** с **Hyprland** и **GPU passthrough**.
+
+> ✅ **UEFI включён**, **OVMF**, **NVIDIA**, **Arch/EndeavourOS host**, **NixOS guest**  
+> Всё делается на физическом Arch, внутри — NixOS c Hyprland и полным passthrough NVIDIA.
 
 ---
 
 ## 1. Пакеты хост-системы
 ```bash
 sudo pacman -Syu
-sudo pacman -S qemu virt-manager dnsmasq dmidecode ovmf swtpm
+sudo pacman -S qemu virt-manager ebtables dnsmasq dmidecode ovmf swtpm
 ````
 
 ---
 
-## 2. IOMMU + VFIO (Legacy BIOS)
+## 2. IOMMU + VFIO (UEFI)
 
-### 2.1 Проверить группы IOMMU
+### 2.1 Убедиться, что IOMMU включён
 
 bash
 
 Copy
 
 ```bash
-sudo dmesg | grep -i iommu
+dmesg | grep -i iommu
 ```
 
-Если **IOMMU не виден**, добавь параметры вручную.
+Если нет — добавить в параметры загрузки.
 
-### 2.2 GRUB (Legacy BIOS)
+### 2.2 GRUB (UEFI)
 
-Отредактируй `/etc/default/grub`:
+Открыть `/etc/default/grub`:
 
 bash
 
@@ -50,7 +50,7 @@ Copy
 lspci -nn | grep -i nvidia
 ```
 
-Сохранить и пересобрать:
+Сохранить и обновить:
 
 bash
 
@@ -79,7 +79,7 @@ softdep nvidia pre: vfio-pci
 
 ## 4. Mkinitcpio
 
-Добавить модули раньше nvidia:
+Добавить модули:
 
 bash
 
@@ -131,7 +131,7 @@ sudo usermod -aG libvirt $USER
 
 ---
 
-## 7. Виртуальная машина (Legacy BIOS + SeaBIOS)
+## 7. Виртуальная машина (UEFI + OVMF)
 
 ### 7.1 Скачать ISO
 
@@ -153,48 +153,35 @@ Copy
 qemu-img create -f qcow2 nixos-gpu.qcow2 60G
 ```
 
-### 7.3 Запуск без virt-manager (CLI)
+### 7.3 Создание через virt-manager
 
-> Прямой запуск, если virt-manager не умеет Legacy GPU passthrough.
+1. `virt-manager` → «Create a new VM»  
+    • Import existing disk → `nixos-gpu.qcow2`  
+    • OS Type: Linux → Version: generic  
+    • RAM ≥ 8 GB, CPUs ≥ 8 cores  
+    • **Firmware**: UEFI x86_64: `/usr/share/edk2-ovmf/x64/OVMF_CODE.fd`  
+    • Chipset: Q35  
+    • **Video**: remove QXL/Virtio (none)  
+    • Add Hardware → PCI Host Device → GPU + audio NVIDIA  
+    • CPUs → host-passthrough  
+    • TPM v2.0 (swtpm) — по желанию
+    
+2. Подключить ISO и установить NixOS.
+    
+
+---
+
+## 8. Установка NixOS внутри VM
 
 bash
 
 Copy
 
 ```bash
-sudo qemu-system-x86_64 \
-  -enable-kvm \
-  -m 8192 \
-  -smp 8 \
-  -cpu host \
-  -drive file=nixos-gpu.qcow2,if=virtio,cache=writeback \
-  -drive file=nixos-minimal.iso,media=cdrom \
-  -boot d \
-  -vga none \
-  -device vfio-pci,host=01:00.0,multifunction=on \
-  -device vfio-pci,host=01:00.1 \
-  -display none \
-  -serial mon:stdio
+sudo nixos-install
 ```
 
-> Поменять `01:00.0` и `01:00.1` на свои `lspci` адреса.
-
----
-
-## 8. Установка NixOS внутри VM
-
-1. Запустить CLI установщик:
-    
-    bash
-    
-    Copy
-    
-    ```bash
-    sudo nixos-install
-    ```
-    
-2. Пример `configuration.nix` (копировать в `/etc/nixos/`):
-    
+Пример `configuration.nix` (UEFI, GPT, systemd-boot):
 
 nix
 
@@ -206,9 +193,8 @@ Copy
 {
   imports = [ ./hardware-configuration.nix ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";   # virtio
-  boot.loader.grub.useOSProber = false;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelParams = [ "nvidia-drm.modeset=1" ];
 
@@ -257,7 +243,7 @@ Copy
 sudo reboot
 ```
 
-Если всё правильно — Hyprland запустится на **реальной NVIDIA** через VFIO passthrough.
+Hyprland должен запуститься на **реальной NVIDIA** через VFIO passthrough.
 
 ---
 
@@ -268,3 +254,5 @@ sudo reboot
 - `lspci -k | grep -A3 -i nvidia`
     
 - `journalctl -xe`
+    
+- `sudo virsh dumpxml nixos-gpu | grep -i hostdev`
