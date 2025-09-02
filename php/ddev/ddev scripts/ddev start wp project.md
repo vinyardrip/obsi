@@ -2,11 +2,11 @@
 ```bash
 #!/usr/bin/env bash
 # =================================================================
-# Скрипт для быстрого создания нового WordPress проекта на DDEV "с нуля".
-# ВЕРСИЯ 1.8: Возвращен флаг --project-tld "lo" для корректного локального URL.
+# Скрипт для создания нового WordPress проекта на DDEV "с нуля".
+# ВЕРСИЯ 2.0: Интерактивный ввод имени, переименован для специализации на WP.
 #
 # Что делает:
-# 1. Создает директорию проекта с правильным локальным доменом.
+# 1. Спрашивает имя проекта.
 # 2. Устанавливает и настраивает WordPress.
 # 3. Копирует, генерирует style.css и активирует стартовую тему.
 # 4. Открывает сайт в браузере.
@@ -30,29 +30,31 @@ else
 fi
 
 # --- Логика скрипта ---
-if [ -z "$1" ]; then
-    printf "%sОшибка: Укажите имя проекта.%s\n" "${RED}" "${NC}"
-    printf "Пример использования: %s my-new-site\n" "$(basename "$0")"
+printf "%s--- Создание нового проекта WordPress ---%s\n" "${BLUE}" "${NC}"
+
+# === ИЗМЕНЕНИЕ: Переход на интерактивный ввод имени проекта ===
+read -p "1. Введите имя нового проекта (например, my-cool-site): " PROJECT_NAME
+if [ -z "$PROJECT_NAME" ]; then
+    printf "%sОШИБКА: Имя проекта не может быть пустым.%s\n" "${RED}" "${NC}"
     exit 1
 fi
+# === КОНЕЦ ИЗМЕНЕНИЯ ===
 
-PROJECT_NAME=$1
 PROJECT_PATH="${DDEV_PROJECTS_BASE_PATH}/${PROJECT_NAME}"
-SITE_URL="https://${PROJECT_NAME}.lo" # <-- Мы ожидаем именно этот URL
+SITE_URL="https://${PROJECT_NAME}.lo"
 
 if [ -d "$PROJECT_PATH" ]; then
     printf "%sВНИМАНИЕ: Директория '%s' уже существует. Операция отменена.%s\n" "${YELLOW}" "${PROJECT_PATH}" "${NC}"
     exit 1
 fi
 
-printf "%s--- Создание нового WordPress проекта: %s%s%s ---\n" "${BLUE}" "${GREEN}" "${PROJECT_NAME}" "${NC}"
+printf "\n%sНачинаем создание проекта '%s'...%s\n" "${GREEN}" "${PROJECT_NAME}" "${NC}"
 
 printf "Шаг 1: Создание директории проекта...\n"
 mkdir -p "$PROJECT_PATH"
 cd "$PROJECT_PATH"
 
 printf "Шаг 2: Конфигурация и запуск DDEV...\n"
-# === ВОТ ИСПРАВЛЕНИЕ: ВОЗВРАЩАЕМ --project-tld "lo" ===
 ddev config --project-type wordpress --docroot "" --project-tld "lo"
 ddev start
 
