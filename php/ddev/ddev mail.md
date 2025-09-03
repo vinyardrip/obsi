@@ -48,9 +48,9 @@
 
     hostname: smtp.gmail.com
     port: 587
-    username: vash-email@gmail.com
+    username: 
     # ВАЖНО: Для Gmail и многих других сервисов нужен специальный "пароль для приложений"
-    password: "VASH_PAROL_OT_PRILOZHENIYA"
+    password: ""
     security: tls
     ```
 4.  Сохраните и закройте файл. Эта настройка выполнена **один раз и навсегда**.
