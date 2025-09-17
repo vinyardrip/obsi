@@ -37,7 +37,7 @@
 |   |   |   |   |
 |---|---|---|---|
 |Тип (English)|Перевод|Пояснение|Пример|
-|feat|Новая функциональность|Добавление новой функциональности в проект.|feat(auth): add login with google|
+|feat|Новая функциональность|Добавление новой ИЛИ **удаление** существующей функциональности.|feat(auth): add login with google|
 |fix|Исправление ошибки|Исправление бага в коде.|fix(parser): handle unexpected end-of-file|
 |docs|Документация|Изменения, затрагивающие только документацию (README, комментарии в коде).|docs(readme): update installation instructions|
 |style|Стилизация кода|Изменения, не влияющие на логику кода (форматирование, пробелы, точки с запятой).|style(main.js): apply prettier formatting|
