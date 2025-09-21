@@ -1,3 +1,5 @@
+
+
 # Распределение ресурсов KVM для ВМ на Dell Inspiron 7720
 
 **Теги:** #virtualization #kvm #resourcemanagement #nixos #windows11 #dell
