@@ -46,7 +46,7 @@
     codeBash
     
     ```
-    sudo nano /etc/tor/torrc
+    sudo micro /etc/tor/torrc
     ```
     
 2. **Добавьте в самый конец файла следующие строки:**  
