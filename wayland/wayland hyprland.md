@@ -24,6 +24,8 @@ codeBash
 # Ищем оригинальный файл (замените 'obsidian' на 'code', 'element-desktop' и т.д.)
 # Сначала смотрим в /usr/share/applications/
 ls /usr/share/applications/obsidian.desktop
+# для element
+ls /usr/share/applications/io.element.Element.desktop
 
 # Копируем найденный файл в домашнюю папку
 cp /usr/share/applications/obsidian.desktop ~/.local/share/applications/
