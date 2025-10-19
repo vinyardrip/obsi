@@ -44,9 +44,9 @@ micro ~/.local/share/applications/obsidian.desktop
 
 - **Для Obsidian:**
     
-    - **Было:** Exec=/opt/Obsidian/obsidian %U
+    - **Было:** Exec=/usr/bin/obsidian %U
         
-    - **Стало:** Exec=/opt/Obsidian/obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland %U
+    - **Стало:** Exec=/usr/bin/obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland %U
         
 - **Для VSCode:**
     
