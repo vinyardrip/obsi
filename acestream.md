@@ -1,4 +1,4 @@
-
+```
 Установка Ace Stream на Arch / EndeavourOS (без Snap)
 #linux #arch #endeavouros #acestream #aur #systemd #mpv
 Инструкция по установке и настройке Ace Stream через AUR. Этот метод использует системные библиотеки, занимает значительно меньше места и лучше интегрируется в систему, чем Snap-версия.
