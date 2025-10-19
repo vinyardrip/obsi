@@ -29,6 +29,9 @@ ls /usr/share/applications/io.element.Element.desktop
 
 # Копируем найденный файл в домашнюю папку
 cp /usr/share/applications/obsidian.desktop ~/.local/share/applications/
+
+# element
+cp /usr/share/applications/io.element.Element.desktop ~/.local/share/applications
 ```
 
 #### Шаг 2: Открываем и редактируем скопированный файл
