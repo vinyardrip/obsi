@@ -35,7 +35,7 @@ codeBash
 
 ```
 # Открываем локальную копию в редакторе
-nano ~/.local/share/applications/obsidian.desktop
+micro ~/.local/share/applications/obsidian.desktop
 ```
 
 #### Шаг 3: Заменяем строку Exec=
