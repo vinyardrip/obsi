@@ -95,7 +95,7 @@ cp /usr/share/applications/google-chrome.desktop ~/.local/share/applications/
 codeBash
 
 ```
-nano ~/.local/share/applications/google-chrome.desktop
+micro ~/.local/share/applications/google-chrome.desktop
 ```
 
 #### Шаг 3: Заменяем строку Exec=
