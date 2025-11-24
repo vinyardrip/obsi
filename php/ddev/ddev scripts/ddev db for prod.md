@@ -149,5 +149,5 @@ exit 0
 ```
 
 ```
-ddev-te
+ddev-export
 ```
