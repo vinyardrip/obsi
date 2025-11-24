@@ -195,3 +195,9 @@ printf "Сайт доступен по адресу: %s%s%s\n" "${YELLOW}" "${NE
 ddev launch
 
 exit 0
+
+```
+
+```
+ddev-deploy
+```

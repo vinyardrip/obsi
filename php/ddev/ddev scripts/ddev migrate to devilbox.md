@@ -220,3 +220,9 @@ printf "Сайт доступен: %s%s%s\n" "${YELLOW}" "${NEW_URL}" "${NC}"
 ddev launch
 
 exit 0
+
+```
+
+```
+ddev-migrate-devilbox
+```
