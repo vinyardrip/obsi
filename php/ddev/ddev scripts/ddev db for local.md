@@ -1,12 +1,22 @@
-``` bash
+  
+
+
+
+# 🔄 Скрипт: ddev-refresh (v3.5 Final)
+
+Скрипт "освежает" локальный сайт данными с живого сайта.
+**Логика:**
+1.  **Файл-бэкап:** Сохраняется в `db_local` (надежное хранение).
+2.  **Snapshot:** Создается временный снимок с таймстемпом.
+3.  **Очистка:** Скрипт держит ровно **3 последних** авто-снимка, остальные удаляет, чтобы не забивать диск.
+
+### Код скрипта (`ddev-refresh`)
+
+```bash
 #!/usr/bin/env bash
 # =================================================================
-# СКРИПТ: Обновление локальной DDEV из Продакшена (v3.4)
-# Логика:
-# 1. Бэкап текущей локалки в файл -> db_local (для истории).
-# 2. Бэкап текущей локалки в Snapshot (для быстрой страховки).
-# 3. Импорт базы с прода (из db_prod).
-# 4. Авто-запуск сайта в браузере.
+# СКРИПТ: ddev-refresh (v3.5)
+# Задача: Накатить базу с прода на локалку с подстраховкой.
 # =================================================================
 
 set -e
@@ -16,6 +26,7 @@ DB_PROD_PATH="$HOME/projects/work/db_prod"
 DB_LOCAL_PATH="$HOME/projects/work/db_local"
 DDEV_PROJECTS_BASE_PATH="$HOME/projects/work/php"
 DEVILBOX_PATH_ROOT="$HOME/projects/work/devilbox"
+KEEP_SNAPSHOTS_COUNT=3  # Хранить последние 3 авто-снимка
 
 # --- Цвета ---
 if command -v tput >/dev/null 2>&1; then
@@ -33,7 +44,7 @@ if [ -d "$DEVILBOX_PATH_ROOT" ]; then
 fi
 
 # 2. Выбор CMS
-echo "1. WordPress (WP-CLI - безопасно)"
+echo "1. WordPress (WP-CLI)"
 echo "2. Другое (Joomla / OpenCart / PHP)"
 read -p "Тип [1]: " PROJECT_CHOICE
 PROJECT_CHOICE=${PROJECT_CHOICE:-1}
@@ -76,16 +87,17 @@ INPUT_FILE_PATH="${DB_PROD_PATH}/${DB_FILENAME_BASE}.sql"
 
 cd "$DDEV_PROJECT_PATH"
 
-printf "\n%sШаг 1: Бэкап в файл (в папку db_local)...%s\n" "${BLUE}" "${NC}"
+printf "\n%sШаг 1: Бэкап в файл (db_local)...%s\n" "${BLUE}" "${NC}"
 mkdir -p "$DB_LOCAL_PATH"
 BACKUP_FILE="${DB_LOCAL_PATH}/${PROJECT_NAME}_before_refresh_$(date +%Y-%m-%d).sql.gz"
 ddev export-db --gzip=true --file="$BACKUP_FILE"
-printf "✔ Сохранен файл: %s\n" "$BACKUP_FILE"
+printf "✔ Файл сохранен: %s\n" "$(basename "$BACKUP_FILE")"
 
-printf "\n%sШаг 2: Страховочный Snapshot (для быстрого отката)...%s\n" "${BLUE}" "${NC}"
-ddev delete-snapshot auto_before_refresh >/dev/null 2>&1 || true
-ddev snapshot --name "auto_before_refresh"
-printf "✔ Снимок создан. Откат, если что: ddev restore-snapshot auto_before_refresh\n"
+printf "\n%sШаг 2: Страховочный Snapshot...%s\n" "${BLUE}" "${NC}"
+# Создаем уникальное имя с временем
+SNAP_NAME="auto_refresh_${PROJECT_NAME}_$(date +%Y%m%d_%H%M%S)"
+ddev snapshot --name "$SNAP_NAME"
+printf "✔ Снимок создан: %s\n" "$SNAP_NAME"
 
 printf "\n%sВНИМАНИЕ: Локальная БД будет заменена данными из:%s\n%s\n" "${RED}" "${NC}" "$INPUT_FILE_PATH"
 read -p "Погнали? (y/n): " CONFIRM
@@ -105,12 +117,22 @@ else
     rm "$TEMP_SQL"
 fi
 
-printf "\n%s🎉 Готово! 🎉%s\n" "${GREEN}" "${NC}"
-printf "Локальный сайт '%s' успешно обновлен данными с продакшена.\n" "$PROJECT_NAME"
-printf "Он доступен по адресу: %s%s%s\n" "${YELLOW}" "${LOCAL_URL}" "${NC}"
+# --- 🧹 GARBAGE COLLECTOR ---
+# Оставляем только 3 последних авто-снимка для ЭТОГО проекта
+printf "\n%s🧹 Чистка старых авто-снимков...%s\n" "${BLUE}" "${NC}"
+SNAPSHOT_DIR=".ddev/db_snapshots"
+if [ -d "$SNAPSHOT_DIR" ]; then
+    # Ищем файлы, начинающиеся на "auto_refresh_ИМЯПРОЕКТА"
+    # ls -t сортирует по времени (новые сверху)
+    # tail пропускает первые N, остальное удаляет
+    ls -1td "$SNAPSHOT_DIR"/auto_refresh_"${PROJECT_NAME}"_* 2>/dev/null | tail -n +$((KEEP_SNAPSHOTS_COUNT + 1)) | xargs rm -rf
+fi
+
+printf "\n%s🎉 Готово! %s%s\n" "${GREEN}" "${LOCAL_URL}" "${NC}"
 ddev launch
 
 exit 0
+````
 ```
 
 
