@@ -88,11 +88,10 @@ ddev restart
 
 1. Введите команду без аргументов:
     
-    codeBash
     
-    ```
-    ddev restore-snapshot
-    ```
+ ```sh
+   ddev restore-snapshot
+   ```
     
 2. DDEV покажет интерактивный список.
     
