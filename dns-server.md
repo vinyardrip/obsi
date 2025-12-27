@@ -34,13 +34,13 @@
    FallbackDNS=1.0.0.1 8.8.4.4
 ```
 
-3. Перезапустить:```
-   ```
-```bash
+
+3. Перезапустить:
+   ```bash
    sudo systemctl restart systemd-resolved
-   ```
 
-
+```
+   
 ####  Arch Linux (NetworkManager)
 
 - GUI: Правая кнопка по подключению → Параметры → IPv4/IPv6 → DNS →  
