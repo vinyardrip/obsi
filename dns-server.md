@@ -7,6 +7,7 @@
 - `https://cloudflare-dns.com/dns-query` → 1.1.1.1
 - `https://dns.quad9.net/dns-query` → 9.9.9.9
 - `https://dns.mullvad.net/dns-query` (без подписки, no-logs)
+-  `https://dns.malw.link/dns-query`
 
 ---
 
@@ -33,16 +34,12 @@
    FallbackDNS=1.0.0.1 8.8.4.4
 ```
 
-3. Перезапустить:
-    
-    bash
-    
-    Copy
-    
-    ```bash
-    sudo systemctl restart systemd-resolved
-    ```
-    
+3. Перезапустить:```
+   ```
+```bash
+   sudo systemctl restart systemd-resolved
+   ```
+
 
 ####  Arch Linux (NetworkManager)
 
