@@ -69,7 +69,6 @@ glab repo create РЕПО_ИМЯ --public
 Аналогично GitHub, можно создать, привязать и отправить код одной командой.
 
 
-````
 # Для приватного репозитория
 glab repo create РЕПО_ИМЯ --private --source=. --push
 
