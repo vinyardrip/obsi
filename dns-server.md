@@ -8,11 +8,14 @@
 - `https://dns.quad9.net/dns-query` → 9.9.9.9
 - `https://dns.mullvad.net/dns-query` (без подписки, no-logs)
 -  `https://dns.malw.link/dns-query`
+- `https://u35p8m9i7.cloudflare-gateway.com` (mirror)
 - dns.mafioznik.xyz
 - dns2.mafioznik.xyz
 - dot.dns.astracat.ru
 - dns.geohide.ru
-- 
+- dns.comss.one
+- free.shecan.ir
+- pro.shecan.ir
 
 ---
 
