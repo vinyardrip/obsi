@@ -8,6 +8,11 @@
 - `https://dns.quad9.net/dns-query` → 9.9.9.9
 - `https://dns.mullvad.net/dns-query` (без подписки, no-logs)
 -  `https://dns.malw.link/dns-query`
+- dns.mafioznik.xyz
+- dns2.mafioznik.xyz
+- dot.dns.astracat.ru
+- dns.geohide.ru
+- 
 
 ---
 
