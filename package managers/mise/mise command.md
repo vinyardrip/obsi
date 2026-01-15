@@ -88,6 +88,15 @@ mise ls-remote ruby | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | awk -F. '{if (!a[$1".
 
 ### 🦀 Rust
 
+**Список стабильных:**
+
+Bash
+
+```
+mise ls-remote rust | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | awk -F. '{a[$1"."$2]=$0} END {for (i in a) print a[i]}' | sort -V | tail -n 15
+```
+
+
 **Установка через каналы:**
 
 - `mise use -g rust@stable`
