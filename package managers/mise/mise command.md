@@ -23,14 +23,14 @@
 
 ## Сравнительная таблица: Mise vs ASDF
 
-|Задача|Mise (Предпочтительно)|ASDF (Новый синтаксис)|
-|:--|:--|:--|
-|Установить локальную версию|`mise use node@20`|`asdf set nodejs 20`|
-|Установить глобальную версию|`mise global node@20`|`asdf set --home nodejs 20`|
-|Установка из .tool-versions|`mise install`|`asdf install`|
-|Список доступных версий|`mise ls-remote node`|`asdf list all nodejs`|
-|Добавление плагина|_(Автоматически)_|`asdf plugin add nodejs`|
-|Показать активные версии|`mise current`|`asdf current`|
-|Показать путь к шиму|`mise which node`|`asdf which node`|
-|Путь к папке инструмента|`mise where node`|`asdf where nodejs`|
-|Обновить все плагины|`mise plugins update`|`asdf plugin update --all`|
+| Задача                       | Mise (Предпочтительно) | ASDF (Новый синтаксис)      |
+| :--------------------------- | :--------------------- | :-------------------------- |
+| Установить локальную версию  | `mise use node@20`     | `asdf set nodejs 20`        |
+| Установить глобальную версию | `mise global node@20`  | `asdf set --home nodejs 20` |
+| Установка из .tool-versions  | `mise install`         | `asdf install`              |
+| Список доступных версий      | `mise ls-remote node`  | `asdf list all nodejs`      |
+| Добавление плагина           | _(Автоматически)_      | `asdf plugin add nodejs`    |
+| Показать активные версии     | `mise current`         | `asdf current`              |
+| Показать путь к шиму         | `mise which node`      | `asdf which node`           |
+| Путь к папке инструмента     | `mise where node`      | `asdf where nodejs`         |
+| Обновить все плагины         | `mise plugins update`  | `asdf plugin update --all`  |
