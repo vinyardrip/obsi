@@ -61,7 +61,7 @@ mise ls-remote pnpm | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | tail -n 20
 Bash
 
 ```
-mise ls-remote python | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | awk -F. '{if (!a[$1"."$2]++) print $0}' | tail -n 20
+mise ls-remote python | grep -E '^[0-9]+\.[0-9]+' | sort -V | awk -F. '{a[$1"."$2]=$0} END {for (i in a) print a[i]}' | sort -V
 ```
 
 **Установка:**
