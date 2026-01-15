@@ -30,11 +30,11 @@ curl -sL [https://nodejs.org/dist/index.tab](https://nodejs.org/dist/index.tab) 
 **Примеры установки:**
 
 - `mise use -g node@lts` (самая свежая LTS)
-    
+
 - `mise use -g node@20` (последняя в 20-й ветке)
-    
+
 - `mise use node@lts/hydrogen` (локально v18)
-    
+
 
 ### 🟣 pnpm
 
