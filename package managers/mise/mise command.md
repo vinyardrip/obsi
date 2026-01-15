@@ -1,37 +1,36 @@
+# Шпаргалка: Mise vs ASDF (v0.16+)
 
-# Шпаргалка: Сравнение команд Mise и ASDF (v0.16+)
+Справочная информация по командам `mise` и сравнение с актуальной версией `asdf` (на Go).
 
-Этот документ содержит справочную информацию и сравнение команд `mise` и актуальной версии `asdf` (написанной на Go).
+## Mise: Основные команды
 
----
+`mise` отличается лаконичным синтаксисом и автоматизацией рутинных действий (например, автодобавление плагинов).
 
-## Mise: Ключевые команды
+|Задача|Команда mise|Псевдонимы|Описание|
+|:--|:--|:--|:--|
+|Показать активные версии|`mise current` / `mise ls`|`mi ls`|Статус всех инструментов в текущем контексте.|
+|Список доступных версий|`mise ls-remote node`|-|Все версии, которые можно скачать.|
+|Установить всё из .tool-versions|`mise install`|`mi i`|Установка версий из конфиг-файла.|
+|Установить конкретную версию|`mise install node@20.10.0`|`mi i node@latest`|Синтаксис: имя@версия.|
+|Установить глобальную версию|`mise global node@20`|`mi g node@20`|Меняет ~/.config/mise/config.toml.|
+|Установить локальную версию|`mise use node@20`|`mi use node@20`|Создает/меняет ./.tool-versions.|
+|Удалить версию|`mise uninstall node@20`|`mi un node@20`|Удаляет скачанную версию с диска.|
+|Путь к шиму (исполнимому файлу)|`mise which node`|-|Аналог системной `which`.|
+|Путь к папке установки|`mise where node`|-|Полный путь к папке с версией.|
+|Список установленных плагинов|`mise plugins ls`|`mi p ls`|Какие плагины уже загружены.|
+|Список доступных плагинов|`mise plugins ls-remote`|-|Все инструменты в реестре mise.|
+|Обновить плагины|`mise plugins update`|`mi p up`|Обновляет кэш доступных версий.|
 
-`mise` отличается лаконичным синтаксисом и автоматизацией многих действий, таких как установка плагинов.
+## Сравнительная таблица: Mise vs ASDF
 
-| Задача | Команда `mise` | Псевдонимы | Примечание |
-| :--- | :--- | :--- | :--- |
-| Показать инструменты | `mise current` / `mise ls` | `mi ls` | `ls` показывает статус всех инструментов. |
-| Установить всё из `.tool-versions` | `mise install` | `mi i` | Можно настроить на авто-установку. |
-| Установить конкретную версию | `mise install node@20.10.0` | `mi i node@latest`| Используется синтаксис `name@version`. |
-| Установить глобальную версию | `mise global node@20` | `mi g node@20` | Изменяет `~/.config/mise/config.toml`. |
-| Установить локальную версию | `mise use node@20` | `mi use node@20` | Создает/изменяет `./.tool-versions`. |
-| Удалить версию | `mise uninstall node@20` | `mi un node@20` | |
-| Показать путь к исполняемому файлу | `mise which node` | - | Работает как системная команда `which`. |
-| Список установленных плагинов | `mise plugins ls` | `mi p ls` | |
-| Обновить плагины | `mise plugins update` | `mi p up` | |
-
-
----
-
-## Сравнительная таблица (Mise vs ASDF v0.16+)
-
-| Задача | `mise` (Предпочтительный) | `asdf` (Новый синтаксис) |
-| :--- | :--- | :--- |
-| Установить локальную версию | `mise use node@20` | `asdf set nodejs 20` |
-| Установить глобальную версию | `mise global node@20` | `asdf set --home nodejs 20` |
-| Установка из `.tool-versions` | `mise install` | `asdf install` |
-| Добавление плагина | **(Автоматически)** | `asdf plugin add nodejs` |
-| Показать активные версии | `mise current` | `asdf current` |
-| Показать путь к шиму | `mise which node` | `asdf which node` |
-| Обновить все плагины | `mise plugins update` | `asdf plugin update --all` |
+|Задача|Mise (Предпочтительно)|ASDF (Новый синтаксис)|
+|:--|:--|:--|
+|Установить локальную версию|`mise use node@20`|`asdf set nodejs 20`|
+|Установить глобальную версию|`mise global node@20`|`asdf set --home nodejs 20`|
+|Установка из .tool-versions|`mise install`|`asdf install`|
+|Список доступных версий|`mise ls-remote node`|`asdf list all nodejs`|
+|Добавление плагина|_(Автоматически)_|`asdf plugin add nodejs`|
+|Показать активные версии|`mise current`|`asdf current`|
+|Показать путь к шиму|`mise which node`|`asdf which node`|
+|Путь к папке инструмента|`mise where node`|`asdf where nodejs`|
+|Обновить все плагины|`mise plugins update`|`asdf plugin update --all`|
