@@ -30,8 +30,9 @@ sudo pacman -S lsp-plugins-lv2 calf zam-plugins-lv2 mda.lv2 rnnoise libebur128
 
 ### Как применить пресет:
 1.  **Установи пресеты из AUR** (если еще не сделал):  
+
     ```bash
-    yay -S easyeffects-presets-git
+    yay -S easyeffects-digitalone1-presets-git easyeffects-bundy01-presets
     ```
 2.  Открой **EasyEffects** -> вкладка **Presets** (Пресеты).
 3.  Там должен появиться огромный список. Ищи в поиске: `Sennheiser HD 280 Pro`.
