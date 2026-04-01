@@ -6,7 +6,7 @@
 - `https://dns.google/dns-query` → 8.8.8.8
 - `https://cloudflare-dns.com/dns-query` → 1.1.1.1
 - `https://dns.quad9.net/dns-query` → 9.9.9.9
-- `https://dns.mullvad.net/dns-query` (без подписки, no-logs)
+- ok - `https://dns.mullvad.net/dns-query` (без подписки, no-logs)
 -  `https://dns.malw.link/dns-query`
 - `https://u35p8m9i7.cloudflare-gateway.com/dns-query` (mirror)
 - `https://dns.mafioznik.xyz/dns-query`
