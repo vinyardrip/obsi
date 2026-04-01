@@ -8,7 +8,7 @@
 - ok - `https://dns.quad9.net/dns-query` → 9.9.9.9
 - ok - `https://dns.mullvad.net/dns-query` (без подписки, no-logs)
 - ok - `https://dns.malw.link/dns-query`
-- `https://u35p8m9i7.cloudflare-gateway.com/dns-query` (mirror)
+- ok - `https://u35p8m9i7.cloudflare-gateway.com/dns-query` (mirror)
 - `https://dns.mafioznik.xyz/dns-query`
 - `https://dns2.mafioznik.xyz/dns-query` (mirror)
 - `https://dot.dns.astracat.ru/dns-query`
