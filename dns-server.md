@@ -3,6 +3,7 @@
 ##  Резервные DoH-серверы (на случай, если xbox-dns.ru ляжет)  `https://xbox-dns.ru/dns-query`
 
 ### 1. Быстрая замена  
+  `https://dns.comss.one/dns-query`
 - `https://dns.google/dns-query` → 8.8.8.8
 - `https://cloudflare-dns.com/dns-query` → 1.1.1.1
 - ok - `https://dns.quad9.net/dns-query` → 9.9.9.9
